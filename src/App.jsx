@@ -2,49 +2,17 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import React, { useEffect, useState } from 'react';
+import Chat from './pages/chat.jsx';
 import axios from './api/axiosInstance.js';
+import ImageUpload from "./pages/ImageUpload.jsx";
 
 function App() {
   const [count, setCount] = useState(0)
 
-    const [message, setMessage] = useState('');
-
-  useEffect(() => {
-        axios.get('/test')
-            .then(response => setMessage(response.data))
-            .catch(error => {
-                console.error('API 호출 실패:', error);
-                setMessage('API 호출 실패');
-            });
-    }, []);
-
   return (
-      <>
-          <div>
-              <h1>백엔드에서 온 메시지:</h1>
-              <p>{message}</p>
-          </div>
-          <div>
-              <a href="https://vite.dev" target="_blank">
-                  <img src={viteLogo} className="logo" alt="Vite logo"/>
-              </a>
-              <a href="https://react.dev" target="_blank">
-                  <img src={reactLogo} className="logo react" alt="React logo"/>
-              </a>
-          </div>
-          <h1>Vite + React</h1>
-          <div className="card">
-              <button onClick={() => setCount((count) => count + 1)}>
-                  count is {count}
-              </button>
-              <p>
-                  Edit <code>src/App.jsx</code> and save to test HMR
-              </p>
-          </div>
-          <p className="read-the-docs">
-              Click on the Vite and React logos to learn more
-          </p>
-      </>
+      <div>
+          <ImageUpload />
+      </div>
   )
 }
 
